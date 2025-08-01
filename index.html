@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Library Management System</h1>
+            <p class="text-gray-600 mt-2">Manage books, users, and borrowing with ease.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Book Management -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Book Management</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">Add New Book</h3>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="bookTitle" placeholder="Book Title" class="flex-grow p-2 border rounded-md focus:ring-2 focus:ring-indigo-500">
+                            <input type="text" id="bookAuthor" placeholder="Author" class="flex-grow p-2 border rounded-md focus:ring-2 focus:ring-indigo-500">
+                            <input type="number" id="bookQuantity" placeholder="Quantity" class="w-24 p-2 border rounded-md focus:ring-2 focus:ring-indigo-500">
+                            <button id="addBookBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">Add Book</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">Book List</h3>
+                        <div class="max-h-60 overflow-y-auto border rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Available</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookList" class="bg-white divide-y divide-gray-200">
+                                    <!-- Book items will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">User Management</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">Register New User</h3>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="userName" placeholder="User Name" class="flex-grow p-2 border rounded-md focus:ring-2 focus:ring-indigo-500">
+                            <button id="registerUserBtn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Register</button>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-lg font-medium mb-2">Deregister User</h3>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <select id="deregisterUserSelect" class="flex-grow p-2 border rounded-md focus:ring-2 focus:ring-indigo-500"></select>
+                            <button id="deregisterUserBtn" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors">Deregister</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">User List</h3>
+                        <div class="max-h-60 overflow-y-auto border rounded-lg">
+                             <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userList" class="bg-white divide-y divide-gray-200">
+                                    <!-- User items will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Borrowing and Returning -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Borrowing & Returns</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Issue Book -->
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Issue Book</h3>
+                    <div class="space-y-2">
+                        <select id="issueBookSelect" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500"></select>
+                        <select id="issueUserSelect" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500"></select>
+                        <button id="issueBookBtn" class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Issue Book</button>
+                    </div>
+                </div>
+                <!-- Return Book -->
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Return Book</h3>
+                    <div class="space-y-2">
+                        <select id="returnTransactionSelect" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500"></select>
+                        <button id="returnBookBtn" class="w-full bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition-colors">Return Book</button>
+                    </div>
+                </div>
+            </div>
+             <div class="mt-6">
+                <h3 class="text-lg font-medium mb-2">Borrowed Books</h3>
+                 <div class="max-h-60 overflow-y-auto border rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Book Title</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Issue Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="borrowedList" class="bg-white divide-y divide-gray-200">
+                            <!-- Borrowed book items will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="modal">
+      <div class="modal-content">
+        <p id="modalMessage" class="text-center text-lg"></p>
+        <div class="text-center mt-4">
+            <button id="closeModalBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCUFxlnfOC6rEdDyGXZq-a4ubCxLSrzffc",
+    authDomain: "librarymgmt-fc09f.firebaseapp.com",
+    projectId: "librarymgmt-fc09f",
+    storageBucket: "librarymgmt-fc09f.firebasestorage.app",
+    messagingSenderId: "138136449511",
+    appId: "1:138136449511:web:5f1311ee77d2be0e748d42",
+    measurementId: "G-KQ436T8STS"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
+</html>
