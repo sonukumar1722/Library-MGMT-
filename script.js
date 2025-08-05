@@ -4,8 +4,8 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // --- Supabase Configuration ---
 // IMPORTANT: For local setup, you must replace these with your own Supabase project URL and anon key.
 // Follow the instructions in the README.md file.
-const supabaseUrl = 'https://kghaezqquqwhtuaecmlx.supabase.co'; // Replace with your Supabase URL
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtnaGFlenFxdXF3aHR1YWVjbWx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzNjM3ODksImV4cCI6MjA2OTkzOTc4OX0.wROPqL4_meCGplNrM-AWarJp40gDCyxJKmaYxTxBuwc'; // Replace with your Supabase anon key
+ const supabaseUrl = 'YOUR_SUPABASE_URL';
+    const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your Supabase anon key
 
 // --- Initialize Supabase ---
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -298,3 +298,4 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchData();
     subscribeToChanges();
 });
+
